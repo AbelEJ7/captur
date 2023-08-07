@@ -9,6 +9,9 @@ const NavBar = () => {
   const [color, setColor] = useState('transparent');
   const [textColor, setTextColor] = useState('white');
  
+  const handleNav = () => {
+    setNav(!nav)
+  }
    useEffect(() => {
     const changeColor = () => {
       if(window.scrollY >= 90) {
@@ -38,14 +41,14 @@ const NavBar = () => {
             <Link href='/#gallery'>Gallery</Link>
           </li>
           <li className='p-4'>
-            <Link href='/portfolio'>Work</Link>
+            <Link href='/work'>Work</Link>
           </li>
           <li className='p-4' >
             <Link href='/contact'>Contact</Link>
           </li>
         </ul>
       {/* Mobile Button */}
-      <div onClick={() => setNav(!nav)} className='sm:hidden block z-10'>
+      <div onClick={handleNav} className='sm:hidden block z-10'>
           { nav ? (
             <AiOutlineClose style={{color: `${textColor}`}} size={20} />
           ) : (
@@ -56,16 +59,16 @@ const NavBar = () => {
       {/* Mobile menu */}
       <div className={nav ? 'sm:hidden bg-black absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen text-center ease-in duration-300' : ' sm:hiddenbg-black absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen text-center ease-in duration-300'} >
       <ul >
-          <li className={mobileli}>
+          <li onClick={handleNav} className={mobileli}>
             <Link href='/'>Home</Link>
           </li>
-          <li className={mobileli} >
+          <li onClick={handleNav} className={mobileli} >
             <Link href='/#gallery'>Gallery</Link>
           </li>
-          <li className={mobileli}>
-            <Link href='/portfolio'>Work</Link>
+          <li onClick={handleNav} className={mobileli}>
+            <Link href='/work'>Work</Link>
           </li>
-          <li className={mobileli} >
+          <li onClick={handleNav} className={mobileli} >
             <Link href='/contact'>Contact</Link>
           </li>
         </ul>
